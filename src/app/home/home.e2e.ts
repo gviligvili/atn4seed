@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-describe('App', () => {
+describe('Home', () => {
 
   beforeEach(() => {
     // change hash depending on router LocationStrategy
@@ -9,6 +9,7 @@ describe('App', () => {
 
 
   it('should have a title', () => {
+
     let subject = browser.getTitle();
     let result  =  'Angular2 & NgRedux2 & Webpack Starter assembled By Tal Gvili';
     expect(subject).toEqual(result);
