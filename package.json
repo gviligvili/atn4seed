@@ -28,6 +28,7 @@
     "lodash": "^4.17.4",
     "ng2-bootstrap": "^1.6.3",
     "ng2-redux": "^5.1.2",
+    "ngx-perfect-scrollbar": "^4.3.0",
     "normalizr": "^3.2.3",
     "npm": "^4.6.1",
     "perfect-scrollbar": "^0.7.0",
