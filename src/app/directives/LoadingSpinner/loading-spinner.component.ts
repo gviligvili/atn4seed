@@ -1,17 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ATNAngular4</title>
-  <base href="/">
+/**
+ * Created by talgvili on 18/06/2017.
+ */
+import {Component} from '@angular/core';
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-<app></app>
-<!-- Remove it after the first server response was done.-->
-<div id="startup-spinner" class='loading-spinner-overlay'>
+@Component({
+  selector: 'loading-spinner',
+  template: `
+<div class='always-showing-loading-spinner-overlay'>
   <div class='loading-spinner-anim'>
     <div class='loading-spinner-border loading-spinner-out'></div>
     <div class='loading-spinner-border loading-spinner-in'></div>
@@ -32,5 +27,10 @@
     </div>
   </div>
 </div>
-</body>
-</html>
+`,
+  styles: [''] // The Styles are in the src/styles.css file ! , because we need themfbefore compilation !
+})
+export class LoadingSpinner {
+  constructor() {
+  }
+}
