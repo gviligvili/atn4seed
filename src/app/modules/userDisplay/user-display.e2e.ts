@@ -9,8 +9,8 @@ describe('user-display Smart', () => {
 });
 
 
-    it('should have a users-view directive', () => {
-        let userViewCount = element.all(by.css('users-view')).count();
+    it('should have a users-view directive', async () => {
+        let userViewCount = await element.all(by.css('users-view')).count();
 
         expect(userViewCount).toEqual(1);
     });

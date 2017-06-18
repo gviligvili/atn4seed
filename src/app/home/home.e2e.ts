@@ -8,18 +8,18 @@ describe('Home', () => {
   });
 
 
-  it('should have a title', () => {
+  it('should have a title', async () => {
 
-    let subject = browser.getTitle();
+    let subject = await browser.getTitle();
     let result  =  'Angular2 & NgRedux2 & Webpack Starter assembled By Tal Gvili';
     expect(subject).toEqual(result);
   });
 
-  it('should have counter buttons', () => {
+  it('should have counter buttons', async() => {
     // Set Up
-    let incrementButton = element(by.css('#incrementCounter')).isPresent();
-    let redoButton = element(by.css('#redoCounter')).isPresent();
-    let undoButton = element(by.css('#undoCounter')).isPresent();
+    let incrementButton = await element(by.css('#incrementCounter')).isPresent();
+    let redoButton = await element(by.css('#redoCounter')).isPresent();
+    let undoButton = await element(by.css('#undoCounter')).isPresent();
 
     // Test
     expect(incrementButton).toBe(true);
