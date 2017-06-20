@@ -14,6 +14,10 @@ span.active {
   background-color: gray;
 }
 
+.app-container {
+  height: 100%; //  height for the scroll component
+}
+
 .footer {
   margin-top: 20px;
   width: 100%;

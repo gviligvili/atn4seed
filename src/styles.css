@@ -41,7 +41,6 @@ app:empty + .loading-spinner-overlay  {
   transform: translate(-50%, -50%);
   perspective: 800px;
   transform-style: preserve-3d;
-  transition: all .2s ease-out;
 }
 
 .loading-spinner-anim .circle {
