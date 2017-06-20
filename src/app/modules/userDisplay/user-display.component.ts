@@ -2,7 +2,7 @@
  * Created by talgvili on 26/12/2016.
  */
 import { Component } from '@angular/core';
-import {NgRedux, select} from "ng2-redux/lib/index";
+import {NgRedux, select} from "@angular-redux/store";
 import {Observable, Subscription} from "rxjs/Rx";
 import {UsersActions} from "../../actions/usersActions/users.actions";
 

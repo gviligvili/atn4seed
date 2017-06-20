@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
 import {Http, Response} from "@angular/http";
 import {normalize, denormalize} from 'normalizr'
@@ -56,7 +56,7 @@ export class ArticlesActions {
             .subscribe(
                 this._fetchSuccesful.bind(this),
                 this._fetchError.bind(this),
-                () => { 
+                () => {
                     console.log("Articles Request subscription is done.");
                 }
             )
@@ -107,9 +107,9 @@ export class ArticlesActions {
         console.timeEnd("Denormalize")
         return d;
     }
-    
+
     // private Function
-    
+
     _fetchSuccesful(res: Response){
         let articlesData = res.json()
         // Normalizing our data, and dispatching to for everyone who needs to know (in this case, user service
@@ -132,7 +132,7 @@ export class ArticlesActions {
         // a promise, return the articles.
         return articles
     }
-    
+
     _fetchError(err){
         let message = err.message || "Error fetching articles"
         this.ngRedux.dispatch({ type: ArticlesActions.FETCH_ARTICLES_FAILURE, payload: { error: message } });

@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArticlesActions} from "../../actions/articlesActions/articles.actions";
 import {Observable, Subscription} from "rxjs/Rx";
 import {AnonymousSubject} from "rxjs/Subject";
-import {select, NgRedux} from "ng2-redux";
+import {select, NgRedux} from "@angular-redux/store";
 
 /**
  *   I would like to point out that this is a SMART component.

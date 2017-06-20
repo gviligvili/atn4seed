@@ -18,7 +18,7 @@ chai.use(sinonChai);
 
 
 
-import {NgRedux, NgReduxModule} from 'ng2-redux';
+import {NgRedux, NgReduxModule} from '@angular-redux/store';
 import {ArticlesActions} from './articles.actions';
 import {TestBed, inject, async} from "@angular/core/testing";
 import {HttpModule, Http, BaseRequestOptions, Response, ResponseOptions} from "@angular/http";

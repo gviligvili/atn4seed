@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-redux/store": "^6.5.2",
     "@angular/animations": "^4.2.3",
     "@angular/common": "^4.2.3",
     "@angular/compiler": "^4.2.3",
@@ -39,7 +40,7 @@
     "normalizr": "^3.2.3",
     "npm": "^5.0.3",
     "perfect-scrollbar": "^0.7.0",
-    "redux": "^3.6.0",
+    "redux": "^3.7.0",
     "redux-logger": "^3.0.6",
     "redux-undo": "^0.6.1",
     "rxjs": "^5.1.0",
@@ -57,6 +58,7 @@
     "codelyzer": "~3.0.1",
     "jasmine-core": "~2.6.4",
     "jasmine-spec-reporter": "~4.1.0",
+    "json-server": "^0.10.1",
     "karma": "~1.7.0",
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
@@ -71,6 +73,3 @@
     "typescript": "~2.3.4"
   }
 }
-
-
-

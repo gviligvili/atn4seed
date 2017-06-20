@@ -6,7 +6,7 @@ import {CommonModule}      from '@angular/common';
 import {CounterActions} from "./actions/counterActions/counter.actions";
 import {UsersActions} from "./actions/usersActions/users.actions";
 import {ArticlesActions} from "./actions/articlesActions/articles.actions";
-import {DevToolsExtension, NgReduxModule} from "ng2-redux/lib/index";
+import {DevToolsExtension, NgReduxModule} from "@angular-redux/store";
 import {UsersDisplayModule} from "./modules/userDisplay/user-display.module";
 import {ArticlesModule} from "./modules/articles/articles.module";
 
