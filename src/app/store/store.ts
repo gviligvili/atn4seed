@@ -1,7 +1,8 @@
 import * as counter from './counter';
 import appReducers from './reducers'
 import {compose, Reducer} from "redux";
-import {environment} from "../../environments/environment";
+import { environment } from "../../environments/environment";
+import { IPayloadAction } from "../actions";
 
 export interface IAppState {
   counter?: counter.ICounter;
@@ -19,7 +20,7 @@ export interface IAppState {
  */
 // Generate a reducer to set the root state
 function stateSetter(reducer:Reducer<any>):Reducer<any> {
-  return function (state, action) {
+  return function (state, action:IPayloadAction) {
     if (action.type === 'SET_ROOT_STATE') {
       return action.payload
     }
