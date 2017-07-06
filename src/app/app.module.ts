@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {RouterModule, PreloadAllModules} from '@angular/router';
 // import {removeNgStyles, createNewHosts, createInputTransfer} from '@angularclass/hmr';
-import {AlertModule, DatepickerModule} from 'ng2-bootstrap';
+import {AlertModule, DatepickerModule} from 'ngx-bootstrap';
 
 
 /**

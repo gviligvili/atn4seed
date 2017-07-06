@@ -15,24 +15,14 @@ chai.should();
 chai.use(sinonChai);
 
 
-
-
-
 import {NgRedux, NgReduxModule} from '@angular-redux/store';
+import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 import {ArticlesActions} from './articles.actions';
 import {TestBed, inject, async} from "@angular/core/testing";
 import {HttpModule, Http, BaseRequestOptions, Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import { normalize } from 'normalizr'
 import {articleSchema} from "../../store/schemas";
-
-class MockRedux extends NgRedux<any> {
-    constructor() {
-        super(null);
-    }
-
-    dispatch = function(){};
-}
 
 let articlesMock = [{
         "id": 1,
@@ -74,15 +64,14 @@ let articlesMock = [{
 
 
 describe('articles action creators', () => {
-    let mockRedux:NgRedux<any>;
+    var dispatchSpy;
 
     beforeEach(() => {
-        mockRedux = new MockRedux();
 
         TestBed.configureTestingModule({
             imports: [
                 HttpModule,
-                NgReduxModule
+                NgReduxTestingModule
             ],
             providers: [
                 MockBackend,
@@ -94,16 +83,18 @@ describe('articles action creators', () => {
                     },
                     deps: [MockBackend, BaseRequestOptions]
                 },
-                {
-                    provide: ArticlesActions,
-                    useFactory: (http:Http) => {
-                        return new ArticlesActions(mockRedux, http);
-                    },
-                    deps: [Http]
-                }
+                ArticlesActions
             ]
         });
+
+        MockNgRedux.reset();
+
+        dispatchSpy = spy(MockNgRedux.getInstance(), "dispatch");
     });
+
+    afterEach(() => {
+        dispatchSpy.restore();
+    })
 
 
     it('should add article', inject([ArticlesActions], (articlesActions /** It will be the service Variable !!*/) => {
@@ -122,18 +113,14 @@ describe('articles action creators', () => {
             }
         };
 
-        var funcSpy = spy(mockRedux, "dispatch");
-
-
 
         // Actions
         articlesActions.addArticle(articleData);
 
 
-
         // Tests.
-        funcSpy.should.have.been.called;
-        funcSpy.should.have.been.calledWith(expectedAction)
+        dispatchSpy.should.have.been.called;
+        dispatchSpy.should.have.been.calledWith(expectedAction)
     }));
 
     it('should remove article', inject([ArticlesActions], (articlesActions /** It will be the service Variable !!*/) => {
@@ -147,18 +134,12 @@ describe('articles action creators', () => {
                 }
             };
 
-            var funcSpy = spy(mockRedux, "dispatch");
-
-
-
             // Actions
             articlesActions.removeArticle(article.id);
 
-
-
             // Tests.
-            funcSpy.should.have.been.called;
-            funcSpy.should.have.been.calledWith(expectedAction)
+            dispatchSpy.should.have.been.called;
+            dispatchSpy.should.have.been.calledWith(expectedAction)
     }));
 
 
@@ -167,18 +148,13 @@ describe('articles action creators', () => {
         const expectedAction = {
             type: ArticlesActions.FETCH_ARTICLES_REQUEST
         };
-        var funcSpy = spy(mockRedux, "dispatch");
-
-
 
         // Actions
         articlesActions.fetchArticles();
 
-
-
         // Tests.
-        funcSpy.should.have.been.called;
-        funcSpy.should.have.been.calledWith(expectedAction)
+        dispatchSpy.should.have.been.called;
+        dispatchSpy.should.have.been.calledWith(expectedAction)
     }));
 
     it('failing to fetch articles should dispatch FETCH_ARTICLES_FAILURE action', async(inject([ArticlesActions, MockBackend], (articlesActions, mockBackend) => {
@@ -206,27 +182,21 @@ describe('articles action creators', () => {
             connection.mockError(new Error(errorMessage));
         });
 
-        var funcSpy = spy(mockRedux, 'dispatch');
-
-
 
         // Actions
         articlesActions.fetchArticles().complete(testing)
 
-
-
         //Test
         function testing() {
-            funcSpy.should.have.been.calledTwice;
-            funcSpy.getCall(0).should.have.been.calledWithExactly(expectedFirstAction)
-            funcSpy.getCall(1).should.have.been.calledWithExactly(expectedSecondAction)
+            dispatchSpy.should.have.been.calledTwice;
+            dispatchSpy.getCall(0).should.have.been.calledWithExactly(expectedFirstAction)
+            dispatchSpy.getCall(1).should.have.been.calledWithExactly(expectedSecondAction)
         }
     })));
 
     it('should succeed fetching the articles and dispatch FETCH_ARTICLES_SUCCESS action with articles and users payload.', async(inject([ArticlesActions, MockBackend], (articlesActions, mockBackend) => {
 
         // Setup
-
         let normalizedArticles = normalize(articlesMock, [articleSchema])
         let articles = normalizedArticles.entities.article;
         let users = normalizedArticles.entities.user;
@@ -255,20 +225,14 @@ describe('articles action creators', () => {
             })));
         });
 
-        var funcSpy = spy(mockRedux, 'dispatch');
-
-
-
         // Actions
         articlesActions.fetchArticles().complete(testing)
 
-
-
         //Test
         function testing() {
-            funcSpy.should.have.been.calledTwice;
-            funcSpy.getCall(0).should.have.been.calledWithExactly(expectedFirstAction)
-            funcSpy.getCall(1).should.have.been.calledWithExactly(expectedSecondAction)
+            dispatchSpy.should.have.been.calledTwice;
+            dispatchSpy.getCall(0).should.have.been.calledWithExactly(expectedFirstAction)
+            dispatchSpy.getCall(1).should.have.been.calledWithExactly(expectedSecondAction)
         }
     })));
 });
