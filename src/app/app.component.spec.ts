@@ -2,12 +2,14 @@ import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import {RouterTestingModule} from "@angular/router/testing";
+import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        PerfectScrollbarModule.forRoot({})
       ],
       declarations: [
         AppComponent

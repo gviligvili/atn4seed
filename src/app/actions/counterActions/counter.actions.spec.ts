@@ -1,20 +1,20 @@
 import { NgRedux } from '@angular-redux/store';
 import { CounterActions } from './counter.actions';
+import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 
-class MockRedux extends NgRedux<any> {
-  constructor() {
-    super(null);
-  }
-  dispatch: () => {};
-}
 
 describe('counter action creators', () => {
   let actions: CounterActions;
   let mockRedux: NgRedux<any>;
-
+  let dispatchSpy;
   beforeEach(() => {
-    mockRedux = new MockRedux();
+    mockRedux = MockNgRedux.getInstance();
     actions = new CounterActions(mockRedux);
+
+    MockNgRedux.reset();
+
+    mockRedux = MockNgRedux.getInstance();
+
   });
 
   it('increment should dispatch INCREMENT_COUNTER action', () => {
