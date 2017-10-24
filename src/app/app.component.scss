@@ -3,7 +3,7 @@ $bootstrap-sass-asset-helper: true;
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import '../../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min';
+@import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar';
 
 html, body {
   height: 100%;
