@@ -29,6 +29,8 @@
     "apollo-client": "2.0.3",
     "apollo-link": "1.0.0",
     "apollo-link-context": "1.0.1",
+    "angular2-notifications": "0.7.8",
+    "angulartics2": "2.4.0",
     "bootstrap-sass": "3.3.7",
     "core-js": "2.4.1",
     "font-awesome": "4.7.0",
@@ -47,7 +49,7 @@
     "redux-logger": "3.0.6",
     "redux-undo": "0.6.1",
     "rxjs": "5.4.2",
-    "typescript": "2.3.4",
+    "typescript": "2.5.3",
     "zone.js": "0.8.12"
   },
   "devDependencies": {
@@ -60,6 +62,7 @@
     "chai": "4.0.2",
     "codelyzer": "3.0.1",
     "jasmine-core": "2.6.4",
+    "jasmine-reporters": "2.2.1",
     "jasmine-spec-reporter": "4.1.1",
     "json-server": "0.11.0",
     "karma": "1.7.0",
@@ -72,7 +75,6 @@
     "sinon": "2.3.1",
     "sinon-chai": "2.10.0",
     "ts-node": "3.0.6",
-    "tslint": "5.3.2",
-    "typescript": "2.3.4"
+    "tslint": "5.3.2"
   }
 }
